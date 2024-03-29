@@ -16,6 +16,6 @@ RUN python manage.py collectstatic --noinput
 
 RUN python manage.py makemigrations --noinput
 
-RUN python manage.py migrate
+RUN python manage.py migrate --noinput
 
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "todo_cicd.wsgi:application"]
