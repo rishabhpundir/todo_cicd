@@ -10,7 +10,7 @@ services:
 
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8000 hello.wsgi:application
+    command: gunicorn --bind 0.0.0.0:8000 todo_cicd.wsgi:application
     volumes:
       - .:/app
     ports:
