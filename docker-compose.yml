@@ -1,59 +1,22 @@
-version: "3.9"
+version: '3'
 
 services:
-  django:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: docker-kuber:v1
-    environment:
-      - SECRET_KEY=django-insecure-u))s=nk*dcllud0ci4p8i%u%#ukn-9njj*375=^^b-(05fkdfw
-      - DB_USER=newuser
-      - DB_NAME=dock_kube_
-      - DB_PASSWORD=admin
-      - DB_PORT=5432
-      - DB_HOST=postgresdb
+  db:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:8000 hello.wsgi:application
+    volumes:
+      - .:/app
     ports:
       - "8000:8000"
-    command: sh -c "chmod +x /todo/migrate.sh && sh /todo/migrate.sh && /todo/entrypoint.sh"
-    depends_on:
-      postgresdb:
-        condition: service_healthy
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "pg_isready",
-          "-h",
-          "postgresdb",
-          "-p",
-          "5432",
-          "-U",
-          "newuser"
-        ]
-      interval: 10s
-      retries: 5
-      start_period: 30s
-
-  postgresdb:
-    image: postgres
-    restart: always
-    command: -p 5432
-    environment:
-      - POSTGRES_DB=dock_kube_
-      - POSTGRES_USER=newuser
-      - POSTGRES_PASSWORD=admin
-    expose:
-      - 5434
-    ports:
-      - "5434:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U newuser -d dock_kube_" ]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+    env_file:
+      - .env
 
 volumes:
-  postgres_data:
+  db_data:

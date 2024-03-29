@@ -1,6 +1,15 @@
-FROM python:3.9.7-slim
-ENV PYTHONBUFFERED=1
-COPY . /todo
-WORKDIR /todo
-RUN pip install -r requirements.txt && chmod +x entrypoint.sh
-CMD ["/todo/entrypoint.sh"]
+FROM python:3.9-slim
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /app
+
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /app/
+
+EXPOSE 8000
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "todo_cicd.wsgi:application"]
