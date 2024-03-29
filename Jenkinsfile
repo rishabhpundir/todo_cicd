@@ -9,14 +9,14 @@ pipeline {
                 '''
             }
         }
-        // stage('**Gunicorn Setup**') {
-        //     steps {
-        //         sh '''
-        //         chmod +x gunicorn.sh
-        //         ./gunicorn.sh
-        //         '''
-        //     }
-        // }
+        stage('**Docker Setup**') {
+            steps {
+                sh '''
+                chmod +x docker.sh
+                ./docker.sh
+                '''
+            }
+        }
         // stage('**NginX Setup**') {
         //     steps {
         //         sh '''
