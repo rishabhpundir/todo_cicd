@@ -2,5 +2,5 @@
 
 echo "********Docker Compose starts********"
 echo "-------$PWD-------"
-docker-compose up
+docker compose up
 echo "********Docker container finishes********"
