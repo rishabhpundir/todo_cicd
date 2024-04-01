@@ -14,6 +14,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://3.111.51.190:8001'
+]
+
 
 # Application definition
 
