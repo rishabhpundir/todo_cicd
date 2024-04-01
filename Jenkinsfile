@@ -17,13 +17,13 @@ pipeline {
                 '''
             }
         }
-        // stage('**NginX Setup**') {
-        //     steps {
-        //         sh '''
-        //         chmod +x nginx.sh
-        //         ./nginx.sh
-        //         '''
-        //     }
-        // }
+        stage('**NginX Setup**') {
+            steps {
+                sh '''
+                chmod +x nginx.sh
+                ./nginx.sh
+                '''
+            }
+        }
     }
 }
