@@ -22,6 +22,7 @@ services:
         condition: service_healthy
     volumes:
       - .:/app
+      - /var/lib/jenkins/workspace/TodoCICD/staticfiles:/app/staticfiles
     ports:
       - "8000:8000"
 
