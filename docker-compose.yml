@@ -7,6 +7,8 @@ services:
       - db_data:/var/lib/postgresql/data
     env_file:
       - .env
+    ports:
+      - "5432:5432"
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
@@ -14,10 +16,10 @@ services:
 
   web:
     build: .
+    command: /bin/bash -c "chmod +x ./entrypoint.sh && ./entrypoint.sh"
     depends_on:
       db:
         condition: service_healthy
-    command: gunicorn --bind 0.0.0.0:8000 todo_cicd.wsgi:application
     volumes:
       - .:/app
     ports:

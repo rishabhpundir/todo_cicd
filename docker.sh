@@ -1,5 +1,5 @@
 #!/bin/bash
 
 echo "********Docker Compose starts********"
-docker-compose build
+docker-compose up
 echo "********Docker container finishes********"
