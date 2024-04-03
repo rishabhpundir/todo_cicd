@@ -26,11 +26,11 @@ pipeline {
         //         '''
         //     }
         // }
-        stage('**NginX Setup**') {
+        stage('**Kubernetes Setup**') {
             steps {
                 sh '''
-                chmod +x nginx.sh
-                ./scripts/nginx.sh
+                chmod +x kubernetes.sh
+                ./scripts/kubernetes.sh
                 '''
             }
         }

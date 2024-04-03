@@ -15,8 +15,8 @@ DEBUG = True
 ALLOWED_HOSTS = ["*", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://3.111.51.190:8001',
-    'http://3.111.51.190:8001',
+    'http://3.111.35.41:8001',
+    'http://3.111.35.41:8001',
     'http://127.0.0.1:8001',
     'http://localhost:8001',
 ]
