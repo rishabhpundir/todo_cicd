@@ -1,3 +1,4 @@
+/* groovylint-disable-next-line CompileStatic */
 pipeline {
     agent any
     stages {
@@ -5,7 +6,7 @@ pipeline {
             steps {
                 sh '''
                 chmod +x envsetup.sh
-                ./envsetup.sh
+                ./scripts/envsetup.sh
                 '''
             }
         }
@@ -13,15 +14,23 @@ pipeline {
             steps {
                 sh '''
                 chmod +x docker.sh
-                ./docker.sh
+                ./scripts/docker.sh
                 '''
             }
         }
+        // stage('**NginX Setup**') {
+        //     steps {
+        //         sh '''
+        //         chmod +x nginx.sh
+        //         ./scripts/nginx.sh
+        //         '''
+        //     }
+        // }
         stage('**NginX Setup**') {
             steps {
                 sh '''
                 chmod +x nginx.sh
-                ./nginx.sh
+                ./scripts/nginx.sh
                 '''
             }
         }
