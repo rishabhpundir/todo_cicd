@@ -8,5 +8,5 @@ else
 fi
 
 sudo chmod -R 777 logs
-sudo chmod +x entrypoint.sh
+sudo chmod +x ./scripts/entrypoint.sh
 echo "********Log setup finishes********"
