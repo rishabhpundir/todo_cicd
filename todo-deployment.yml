@@ -19,7 +19,9 @@ spec:
       containers:
       - name: todoapp
         image: rishabhpundir/todocicdapp:latest
-        imagePullPolicy: Always
+        env_file:
+          - .env
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8001
   strategy:
