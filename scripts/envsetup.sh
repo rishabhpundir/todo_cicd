@@ -9,4 +9,5 @@ fi
 
 sudo chmod -R 777 logs
 sudo chmod +x ./scripts/entrypoint.sh
+echo "--------$DB_HOST------$POSTGRES_DB"
 echo "********Log setup finishes********"
