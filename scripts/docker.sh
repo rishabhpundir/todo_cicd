@@ -6,7 +6,9 @@ echo "-------$PWD-------"
 
 docker rmi -f rishabhpundir/todocicdapp:latest
 
-docker compose build -t rishabhpundir/todocicdapp:latest
+# docker tag todocicdapp:latest rishabhpundir/todocicdapp:latest
+
+docker compose build todocicdapp:latest
 
 docker push rishabhpundir/todocicdapp:latest
 
