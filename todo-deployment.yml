@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
   name: todocicd-deploy
@@ -19,7 +19,7 @@ spec:
       containers:
       - name: todoapp
         image: rishabhpundir/todocicdapp:latest
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         ports:
         - containerPort: 8001
   strategy:

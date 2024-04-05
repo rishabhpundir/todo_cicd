@@ -4,9 +4,11 @@ echo "********Docker Compose starts********"
 
 echo "-------$PWD-------"
 
-docker rmi -f rishabhpundir/todocicdapp
+docker rmi -f rishabhpundir/todocicdapp:latest
 
-docker compose build . -t rishabhpundir/todocicdapp
+docker compose build -t rishabhpundir/todocicdapp:latest
+
+docker push rishabhpundir/todocicdapp:latest
 
 echo "-------Current images-------"
 
