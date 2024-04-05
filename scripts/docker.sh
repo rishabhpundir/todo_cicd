@@ -8,7 +8,7 @@ docker rmi -f rishabhpundir/todocicdapp:latest
 
 # docker tag todocicdapp:latest rishabhpundir/todocicdapp:latest
 
-docker compose build todocicdapp:latest
+docker compose build
 
 docker push rishabhpundir/todocicdapp:latest
 
