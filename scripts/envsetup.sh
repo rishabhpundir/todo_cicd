@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /var/lib/jenkins/workspace/TodoCICDPipeline
+
 if [ -d "logs" ]; then
     echo "********Log Folders exist!********"
 else
@@ -8,6 +10,9 @@ else
 fi
 
 sudo chmod -R 777 logs
+
 sudo chmod +x ./scripts/entrypoint.sh
+
 echo "--------$DB_HOST------$POSTGRES_DB"
+
 echo "********Log setup finishes********"

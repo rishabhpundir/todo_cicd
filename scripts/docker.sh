@@ -2,6 +2,8 @@
 
 echo "********Docker Compose starts********"
 
+cd /var/lib/jenkins/workspace/TodoCICDPipeline
+
 echo "-------$PWD-------"
 
 docker rmi -f rishabhpundir/todocicdapp:latest
