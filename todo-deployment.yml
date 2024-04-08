@@ -18,12 +18,12 @@ spec:
     spec:
       containers:
       - name: todoapp
-        image: rishabhpundir/todocicdapp:latest
-        imagePullPolicy: Always
+        image: todocicdapp:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8001
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxSurge: 1
+  #     maxUnavailable: 1
