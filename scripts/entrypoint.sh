@@ -2,7 +2,7 @@
 
 echo "*************Applying database migrations*************"
 
-cd /var/lib/jenkins/workspace/TodoCICDPipeline
+cd /app
 
 python manage.py collectstatic --noinput
 
