@@ -14,7 +14,7 @@ services:
 
   web:
     build: .
-    image: rishabhpundir/todocicdapp:latest
+    image: todocicdapp:latest
     env_file:
       - .env
     command: /bin/bash -c "chmod +x ./scripts/entrypoint.sh && ./scripts/entrypoint.sh"
