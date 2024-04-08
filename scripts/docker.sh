@@ -6,7 +6,7 @@ cd /var/lib/jenkins/workspace/TodoCICDPipeline
 
 echo "-------$PWD-------"
 
-docker rmi -f rishabhpundir/todocicdapp:latest
+docker rmi -f todocicdapp:latest
 
 # docker tag todocicdapp:latest rishabhpundir/todocicdapp:latest
 
