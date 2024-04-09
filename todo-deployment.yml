@@ -4,26 +4,60 @@ metadata:
   name: todocicd-deploy
   labels:
     app: todoapp
-
 spec:
-  replicas: 3
+  # replicas: 3
   selector:
     matchLabels:
       app: todoapp
-
+      tier: cicdapp
   template:
     metadata:
       labels:
         app: todoapp
+        tier: cicdapp
     spec:
+      volumes:
+        - name: todoapp-data
+          persistentVolumeClaim:
+            claimName: todo-app-volume
       containers:
-      - name: todoapp
-        image: todocicdapp:latest
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 8001
-  # strategy:
-  #   type: RollingUpdate
-  #   rollingUpdate:
-  #     maxSurge: 1
-  #     maxUnavailable: 1
+        - image: todocicd:latest
+          name: todoapp
+          imagePullPolicy: Never
+          volumeMounts:
+            - name: todoapp-data
+              mountPath: /vol/web
+          env:
+            - name: DB_HOST
+              value: db
+            - name: POSTGRES_DB
+              value: todo_cicd
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: admin
+            - name: SECRET_KEY
+              value: django-insecure-u))s=nk*dcllud0ci4p8i%u%#ukn-9njj*375=^^b-(05fkdfw
+          # ports:
+          # - containerPort: 8000
+        - image: todonginx:latest
+          imagePullPolicy: Never
+          name: nginx
+          ports:
+            - containerPort: 8000
+              name: nginx
+          volumeMounts:
+            - name: todoapp-data
+              mountPath: /vol/web
+          env:
+            - name: APP_HOST
+              value: "127.0.0.1"
+            - name: APP_PORT
+              value: "8000"
+
+  strategy:
+    type: Recreate
+    # type: RollingUpdate
+    # rollingUpdate:
+    #   maxSurge: 1
+    #   maxUnavailable: 1

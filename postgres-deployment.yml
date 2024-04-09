@@ -1,0 +1,75 @@
+# Service for Postgres DB
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: todoapp
+spec:
+  ports:
+    - port: 5432
+  selector:
+    app: todoapp
+    tier: postgres
+  clusterIP: None
+
+---
+
+# Volume for Postgres DB
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-volume
+  labels:
+    app: todapp
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+
+# Deployment for Posgtres DB
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    app: todo-postgres
+spec:
+  selector:
+    matchLabels:
+      app: todoapp
+      tier: postgres
+
+  strategy:
+    type: Recreate
+
+  template:
+    metadata:
+      labels:
+        app: todoapp
+        tier: postgres
+    spec:
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-volume
+      containers:
+        - image: postgres:latest
+          name: postgres
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+          env:
+            - name: POSTGRES_DB
+              value: todo_cicd
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: admin
