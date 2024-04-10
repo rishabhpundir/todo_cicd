@@ -1,3 +1,41 @@
+# K8s Deployment/Service for TodoApp
+
+
+# Service for todoapp
+apiVersion: v1
+kind: Service
+metadata:
+  name: todocicd-service
+  labels:
+    app: todoapp
+spec:
+  selector:
+    app: todoapp
+    tier: cicdapp
+  ports:
+    - port: 8000
+      # targetPort: 8001
+  type: LoadBalancer
+
+---
+
+# Volume for todo app
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: todo-app-volume
+  labels:
+    app: django
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+
+# Deployment for Todoapp
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,6 +59,7 @@ spec:
           persistentVolumeClaim:
             claimName: todo-app-volume
       containers:
+        # TodoApp Django App Config
         - image: todocicd:latest
           name: todoapp
           imagePullPolicy: Never
@@ -40,6 +79,8 @@ spec:
               value: django-insecure-u))s=nk*dcllud0ci4p8i%u%#ukn-9njj*375=^^b-(05fkdfw
           # ports:
           # - containerPort: 8000
+
+        # Todo Nginx Config
         - image: todonginx:latest
           imagePullPolicy: Never
           name: nginx

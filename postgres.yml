@@ -1,3 +1,5 @@
+# K8s Deployment/Service for Postgres
+
 # Service for Postgres DB
 apiVersion: v1
 kind: Service
@@ -68,8 +70,17 @@ spec:
               mountPath: /var/lib/postgresql/data
           env:
             - name: POSTGRES_DB
-              value: todo_cicd
+              valueFrom:
+                secretKeyRef:
+                  name: db-password
+                  key: password
             - name: POSTGRES_USER
-              value: postgres
+              valueFrom:
+                secretKeyRef:
+                  name: db-password
+                  key: password
             - name: POSTGRES_PASSWORD
-              value: admin
+              valueFrom:
+                secretKeyRef:
+                  name: dbpass
+                  key: password
