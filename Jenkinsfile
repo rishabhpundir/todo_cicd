@@ -18,20 +18,13 @@ pipeline {
                 '''
             }
         }
-        stage('**Test**') {
+        stage('**Kubernetes Setup**') {
             steps {
                 sh '''
-                    whoami
+                chmod +x ./scripts/kubernetes.sh
+                ./scripts/kubernetes.sh
                 '''
             }
         }
-        // stage('**Kubernetes Setup**') {
-        //     steps {
-        //         sh '''
-        //         chmod +x ./scripts/kubernetes.sh
-        //         ./scripts/kubernetes.sh
-        //         '''
-        //     }
-        // }
     }
 }
