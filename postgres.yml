@@ -70,17 +70,10 @@ spec:
               mountPath: /var/lib/postgresql/data
           env:
             - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: db-password
-                  key: password
+              value: ${POSTGRES_DB}
+
             - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: db-password
-                  key: password
+              value: ${POSTGRES_USER}
+
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: dbpass
-                  key: password
+              value: ${POSTGRES_PASSWORD}

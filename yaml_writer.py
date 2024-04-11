@@ -49,7 +49,7 @@ data = {
 def write_env_yaml(data):
     try:
         yaml = YAML()
-        yaml_file_path = "secrets.yml"
+        yaml_file_path = "kustomization.yml"
 
         with open(yaml_file_path, "w") as yaml_file:
             yaml.dump(data, yaml_file)

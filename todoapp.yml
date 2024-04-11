@@ -59,6 +59,7 @@ spec:
           persistentVolumeClaim:
             claimName: todo-app-volume
       containers:
+      
         # TodoApp Django App Config
         - image: todocicd:latest
           name: todoapp
@@ -67,16 +68,24 @@ spec:
             - name: todoapp-data
               mountPath: /vol/web
           env:
-            - name: DB_HOST
-              value: db
-            - name: POSTGRES_DB
-              value: todo_cicd
-            - name: POSTGRES_USER
-              value: postgres
-            - name: POSTGRES_PASSWORD
-              value: admin
             - name: SECRET_KEY
-              value: django-insecure-u))s=nk*dcllud0ci4p8i%u%#ukn-9njj*375=^^b-(05fkdfw
+              value: ${SECRET_KEY}
+
+            - name: DB_HOST
+              value: ${DB_HOST}
+
+            - name: DB_PORT
+              value: ${DB_PORT}
+
+            - name: POSTGRES_DB
+              value: ${POSTGRES_DB}
+
+            - name: POSTGRES_USER
+              value: ${POSTGRES_USER}
+
+            - name: POSTGRES_PASSWORD
+              value: ${POSTGRES_PASSWORD}
+
           # ports:
           # - containerPort: 8000
 

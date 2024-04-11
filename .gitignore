@@ -15,6 +15,7 @@ media/
 staticfiles
 /staticfiles
 staticfiles/
+kustomization.yml
 .env
 env
 venv
