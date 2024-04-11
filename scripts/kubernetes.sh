@@ -10,6 +10,8 @@ env
 
 # /usr/local/bin/minikube start
 
+/usr/local/bin/kubectl delete deployment.apps/todocicd-deploy  deployment.apps/postgres  service/db  service/todocicd-service 
+
 /usr/local/bin/minikube ssh "docker rmi -f todocicd:latest"
 
 /usr/local/bin/minikube ssh "docker images"
