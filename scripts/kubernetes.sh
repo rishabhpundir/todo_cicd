@@ -6,9 +6,13 @@ cd /var/lib/jenkins/workspace/TodoCICDPipeline
 
 env
 
-/usr/local/bin/minikube start
-
 /usr/local/bin/minikube status
+
+# /usr/local/bin/minikube start
+
+/usr/local/bin/minikube ssh "docker rmi -f todocicd:latest"
+
+/usr/local/bin/minikube ssh "docker images"
 
 /usr/local/bin/minikube image load todocicd:latest
 
