@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "********Kubenetes Setup starts!********"
+echo "********Cleanup starts!********"
 
 cd /var/lib/jenkins/workspace/TodoCICDPipeline
 
@@ -18,4 +18,4 @@ cd /var/lib/jenkins/workspace/TodoCICDPipeline
 
 /usr/local/bin/minikube image load todonginx:latest
 
-echo "********Kubernetes Setup Finishes!********"
+echo "********Cleanup Finishes!********"
