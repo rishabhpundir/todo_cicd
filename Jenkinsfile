@@ -18,6 +18,13 @@ pipeline {
                 '''
             }
         }
+        stage('**Test**') {
+            steps {
+                sh '''
+                    /usr/local/bin/minikube status
+                '''
+            }
+        }
         stage('**Kubernetes Setup**') {
             steps {
                 sh '''

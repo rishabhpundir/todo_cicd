@@ -4,6 +4,8 @@ echo "********Kubenetes Setup starts!********"
 
 cd /var/lib/jenkins/workspace/TodoCICDPipeline
 
+env
+
 /usr/local/bin/minikube status
 
 /usr/local/bin/minikube image load todocicd:latest
