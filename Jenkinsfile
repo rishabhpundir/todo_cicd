@@ -2,7 +2,7 @@
 pipeline {
     agent any
     stages {
-        stage('**Python Setup**') {
+        stage('**Python**') {
             steps {
                 sh '''
                 chmod +x ./scripts/envsetup.sh
@@ -10,7 +10,7 @@ pipeline {
                 '''
             }
         }
-        stage('**Docker Setup**') {
+        stage('**Docker**') {
             steps {
                 sh '''
                 chmod +x ./scripts/docker.sh
@@ -18,7 +18,15 @@ pipeline {
                 '''
             }
         }
-        stage('**Kubernetes Setup**') {
+        stage('**Cleanup**') {
+            steps {
+                sh '''
+                chmod +x ./scripts/cleanup.sh
+                ./scripts/cleanup.sh
+                '''
+            }
+        }
+        stage('**Kubernetes**') {
             steps {
                 sh '''
                 chmod +x ./scripts/kubernetes.sh
