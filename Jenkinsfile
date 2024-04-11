@@ -5,7 +5,7 @@ pipeline {
         stage('**Python Setup**') {
             steps {
                 sh '''
-                chmod +x envsetup.sh
+                chmod +x ./scripts/envsetup.sh
                 ./scripts/envsetup.sh
                 '''
             }
@@ -13,7 +13,7 @@ pipeline {
         stage('**Docker Setup**') {
             steps {
                 sh '''
-                chmod +x docker.sh
+                chmod +x ./scripts/docker.sh
                 ./scripts/docker.sh
                 '''
             }
@@ -21,7 +21,7 @@ pipeline {
         stage('**Kubernetes Setup**') {
             steps {
                 sh '''
-                chmod +x kubernetes.sh
+                chmod +x ./scripts/kubernetes.sh
                 ./scripts/kubernetes.sh
                 '''
             }
