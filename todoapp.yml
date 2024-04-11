@@ -69,22 +69,22 @@ spec:
               mountPath: /vol/web
           env:
             - name: SECRET_KEY
-              value: ${SECRET_KEY}
+              value: django-insecure-u))s=nk*dcllud0ci4p8i%u%#ukn-9njj*375=^^b-(05fkdfw
 
             - name: DB_HOST
-              value: ${DB_HOST}
+              value: db
 
             - name: DB_PORT
-              value: ${DB_PORT}
+              value: "5432"
 
             - name: POSTGRES_DB
-              value: ${POSTGRES_DB}
+              value: todo_cicd
 
             - name: POSTGRES_USER
-              value: ${POSTGRES_USER}
+              value: postgres
 
             - name: POSTGRES_PASSWORD
-              value: ${POSTGRES_PASSWORD}
+              value: admin
 
           # ports:
           # - containerPort: 8000

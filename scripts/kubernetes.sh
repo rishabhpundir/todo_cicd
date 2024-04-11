@@ -4,10 +4,14 @@ echo "********Kubenetes Setup starts!********"
 
 cd /var/lib/jenkins/workspace/TodoCICDPipeline
 
-kubectl apply -f todo-postgres.yml
+minikube image load todocicd:latest
 
-kubectl apply -f todo-deployment.yml
+minikube image load todonginx:latest
 
-kubectl apply -f todo-service.yml
+kubectl apply -f postgres.yml
+
+kubectl apply -f todoapp.yml
+
+kubectl port-forward service/todocicd-service  8001:8000
 
 echo "********Kubernetes Setup Finishes!********"

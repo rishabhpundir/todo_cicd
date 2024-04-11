@@ -70,10 +70,10 @@ spec:
               mountPath: /var/lib/postgresql/data
           env:
             - name: POSTGRES_DB
-              value: ${POSTGRES_DB}
+              value: todo_cicd
 
             - name: POSTGRES_USER
-              value: ${POSTGRES_USER}
+              value: postgres
 
             - name: POSTGRES_PASSWORD
-              value: ${POSTGRES_PASSWORD}
+              value: admin
