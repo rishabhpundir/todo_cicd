@@ -6,20 +6,18 @@ cd /var/lib/jenkins/workspace/TodoCICDPipeline
 
 echo "-------$PWD-------"
 
-docker rmi -f todocicdapp:latest
+docker rmi -f todocicd:latest
 
-# docker tag todocicdapp:latest rishabhpundir/todocicdapp:latest
+docker rmi -f todonginx:latest
 
-docker compose --env-file .env build
+docker build -t todocicd:latest .
 
-docker push rishabhpundir/todocicdapp:latest
+docker build -t todonginx:latest nginx/
+
+# docker push rishabhpundir/todocicd:latest
 
 echo "-------Current images-------"
 
 docker images
-
-echo "-------Current Containers-------"
-
-docker ps -a
 
 echo "********Docker finishes********"

@@ -26,16 +26,15 @@ services:
       - /var/lib/jenkins/workspace/TodoCICD/staticfiles:/app/staticfiles
     ports:
       - "8000:8000"
-
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./app.conf:/etc/nginx/conf.d/app.conf
-      - /var/lib/jenkins/workspace/TodoCICD/logs:/var/log/nginx
-    ports:
-      - "8001:8001"
-    depends_on:
-      - web
+  # nginx:
+  #   image: nginx:latest
+  #   volumes:
+  #     - ./app.conf:/etc/nginx/conf.d/app.conf
+  #     - /var/lib/jenkins/workspace/TodoCICD/logs:/var/log/nginx
+  #   ports:
+  #     - "8001:8001"
+  #   depends_on:
+  #     - web
 
 volumes:
   db_data:
