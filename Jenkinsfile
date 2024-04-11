@@ -21,17 +21,17 @@ pipeline {
         stage('**Test**') {
             steps {
                 sh '''
-                    /usr/local/bin/minikube status
+                    whoami
                 '''
             }
         }
-        stage('**Kubernetes Setup**') {
-            steps {
-                sh '''
-                chmod +x ./scripts/kubernetes.sh
-                ./scripts/kubernetes.sh
-                '''
-            }
-        }
+        // stage('**Kubernetes Setup**') {
+        //     steps {
+        //         sh '''
+        //         chmod +x ./scripts/kubernetes.sh
+        //         ./scripts/kubernetes.sh
+        //         '''
+        //     }
+        // }
     }
 }
